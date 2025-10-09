@@ -1,14 +1,20 @@
-"use client"
+"use client";
 
-import { useEffect } from "react"
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { Home, RefreshCw } from "lucide-react"
+import { useEffect } from "react";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { Home, RefreshCw } from "lucide-react";
 
-export default function GlobalError({ error, reset }: { error: Error & { digest?: string }; reset: () => void }) {
+export default function GlobalError({
+  error,
+  reset,
+}: {
+  error: Error & { digest?: string };
+  reset: () => void;
+}) {
   useEffect(() => {
-    console.error(error)
-  }, [error])
+    console.error(error);
+  }, [error]);
 
   return (
     <html lang="en">
@@ -19,7 +25,8 @@ export default function GlobalError({ error, reset }: { error: Error & { digest?
               <h1 className="text-6xl font-bold text-destructive">500</h1>
               <h2 className="text-3xl font-bold">Critical Error</h2>
               <p className="text-muted-foreground leading-relaxed">
-                A critical error occurred. Please try refreshing the page or return to the home page.
+                A critical error occurred. Please try refreshing the page or
+                return to the home page.
               </p>
             </div>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
@@ -38,5 +45,5 @@ export default function GlobalError({ error, reset }: { error: Error & { digest?
         </div>
       </body>
     </html>
-  )
+  );
 }

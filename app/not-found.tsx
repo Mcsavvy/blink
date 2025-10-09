@@ -1,22 +1,29 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import Image from "next/image"
-import { Button } from "@/components/ui/button"
-import { Home, ArrowLeft } from "lucide-react"
+import Link from "next/link";
+import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import { Home, ArrowLeft } from "lucide-react";
 
 export default function NotFound() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-background p-4">
       <div className="max-w-md w-full text-center space-y-6">
         <div className="flex justify-center">
-          <Image src="/blink.png" alt="Blink" width={80} height={80} className="opacity-50" />
+          <Image
+            src="/blink.png"
+            alt="Blink"
+            width={80}
+            height={80}
+            className="opacity-50"
+          />
         </div>
         <div className="space-y-2">
           <h1 className="text-6xl font-bold text-primary">404</h1>
           <h2 className="text-3xl font-bold">Page not found</h2>
           <p className="text-muted-foreground leading-relaxed">
-            Sorry, we couldn't find the page you're looking for. It might have been moved or deleted.
+            Sorry, we couldn't find the page you're looking for. It might have
+            been moved or deleted.
           </p>
         </div>
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
@@ -33,5 +40,5 @@ export default function NotFound() {
         </div>
       </div>
     </div>
-  )
+  );
 }

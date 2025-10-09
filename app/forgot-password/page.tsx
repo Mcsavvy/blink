@@ -1,10 +1,17 @@
-import Link from "next/link"
-import Image from "next/image"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { ArrowLeft } from "lucide-react"
+import Link from "next/link";
+import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { ArrowLeft } from "lucide-react";
 
 export default function ForgotPasswordPage() {
   return (
@@ -15,7 +22,9 @@ export default function ForgotPasswordPage() {
             <Image src="/blink.png" alt="Blink" width={60} height={60} />
           </div>
           <CardTitle className="text-3xl font-bold">Reset password</CardTitle>
-          <CardDescription>Enter your email to receive a reset link</CardDescription>
+          <CardDescription>
+            Enter your email to receive a reset link
+          </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="space-y-2">
@@ -27,12 +36,15 @@ export default function ForgotPasswordPage() {
           </Button>
         </CardContent>
         <CardFooter className="flex justify-center">
-          <Link href="/login" className="text-sm text-muted-foreground hover:text-foreground flex items-center gap-2">
+          <Link
+            href="/login"
+            className="text-sm text-muted-foreground hover:text-foreground flex items-center gap-2"
+          >
             <ArrowLeft className="h-4 w-4" />
             Back to sign in
           </Link>
         </CardFooter>
       </Card>
     </div>
-  )
+  );
 }

@@ -4,7 +4,7 @@ export const mockUser = {
   avatar: "/demo-user.png",
   balance: 0.0234,
   balanceUSD: 1456.78,
-}
+};
 
 export const mockTransactions = [
   {
@@ -62,7 +62,7 @@ export const mockTransactions = [
     status: "completed",
     message: "Freelance work payment",
   },
-]
+];
 
 export const mockGifts = [
   {
@@ -102,12 +102,12 @@ export const mockGifts = [
     status: "sent",
   },
 ] as {
-  id: string
-  amount: number
-  amountUSD: number
-  from?: string
-  to?: string
-  message: string
-  date: string
-  status: "claimed" | "sent" | "pending"
+  id: string;
+  amount: number;
+  amountUSD: number;
+  from?: string;
+  to?: string;
+  message: string;
+  date: string;
+  status: "claimed" | "sent" | "pending";
 }[];

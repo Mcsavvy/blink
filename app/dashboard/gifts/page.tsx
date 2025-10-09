@@ -1,7 +1,7 @@
-import { Button } from "@/components/ui/button"
-import { GiftCard } from "@/components/gift-card"
-import { mockGifts } from "@/lib/mock-data"
-import { Plus } from "lucide-react"
+import { Button } from "@/components/ui/button";
+import { GiftCard } from "@/components/gift-card";
+import { mockGifts } from "@/lib/mock-data";
+import { Plus } from "lucide-react";
 
 export default function GiftsPage() {
   return (
@@ -9,7 +9,9 @@ export default function GiftsPage() {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-3xl font-bold mb-2">Gifts</h1>
-          <p className="text-muted-foreground">Send and receive Bitcoin gifts</p>
+          <p className="text-muted-foreground">
+            Send and receive Bitcoin gifts
+          </p>
         </div>
         <Button>
           <Plus className="h-4 w-4 mr-2" />
@@ -24,5 +26,5 @@ export default function GiftsPage() {
         ))}
       </div>
     </div>
-  )
+  );
 }

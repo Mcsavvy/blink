@@ -1,15 +1,17 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { TransactionItem } from "@/components/transaction-item"
-import { mockTransactions } from "@/lib/mock-data"
-import { Input } from "@/components/ui/input"
-import { Search } from "lucide-react"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { TransactionItem } from "@/components/transaction-item";
+import { mockTransactions } from "@/lib/mock-data";
+import { Input } from "@/components/ui/input";
+import { Search } from "lucide-react";
 
 export default function PaymentsPage() {
   return (
     <div className="space-y-6">
       <div>
         <h1 className="text-3xl font-bold mb-2">Payments</h1>
-        <p className="text-muted-foreground">View and manage all your transactions</p>
+        <p className="text-muted-foreground">
+          View and manage all your transactions
+        </p>
       </div>
 
       {/* Search */}
@@ -30,5 +32,5 @@ export default function PaymentsPage() {
         </CardContent>
       </Card>
     </div>
-  )
+  );
 }

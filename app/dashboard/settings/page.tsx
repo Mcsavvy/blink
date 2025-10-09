@@ -1,17 +1,25 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Label } from "@/components/ui/label"
-import { Input } from "@/components/ui/input"
-import { Button } from "@/components/ui/button"
-import { Switch } from "@/components/ui/switch"
-import { mockUser } from "@/lib/mock-data"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { Switch } from "@/components/ui/switch";
+import { mockUser } from "@/lib/mock-data";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 export default function SettingsPage() {
   return (
     <div className="space-y-6">
       <div>
         <h1 className="text-3xl font-bold mb-2">Settings</h1>
-        <p className="text-muted-foreground">Manage your account and preferences</p>
+        <p className="text-muted-foreground">
+          Manage your account and preferences
+        </p>
       </div>
 
       {/* Profile Settings */}
@@ -23,7 +31,10 @@ export default function SettingsPage() {
         <CardContent className="space-y-6">
           <div className="flex items-center gap-4">
             <Avatar className="h-20 w-20">
-              <AvatarImage src={mockUser.avatar || "/placeholder.svg"} alt={mockUser.name} />
+              <AvatarImage
+                src={mockUser.avatar || "/placeholder.svg"}
+                alt={mockUser.name}
+              />
               <AvatarFallback className="bg-primary text-primary-foreground text-2xl">
                 {mockUser.name
                   .split(" ")
@@ -55,21 +66,27 @@ export default function SettingsPage() {
           <div className="flex items-center justify-between">
             <div className="space-y-0.5">
               <Label>Email Notifications</Label>
-              <p className="text-sm text-muted-foreground">Receive email updates about your transactions</p>
+              <p className="text-sm text-muted-foreground">
+                Receive email updates about your transactions
+              </p>
             </div>
             <Switch defaultChecked />
           </div>
           <div className="flex items-center justify-between">
             <div className="space-y-0.5">
               <Label>Transaction Alerts</Label>
-              <p className="text-sm text-muted-foreground">Get notified when you send or receive Bitcoin</p>
+              <p className="text-sm text-muted-foreground">
+                Get notified when you send or receive Bitcoin
+              </p>
             </div>
             <Switch defaultChecked />
           </div>
           <div className="flex items-center justify-between">
             <div className="space-y-0.5">
               <Label>Marketing Emails</Label>
-              <p className="text-sm text-muted-foreground">Receive updates about new features and promotions</p>
+              <p className="text-sm text-muted-foreground">
+                Receive updates about new features and promotions
+              </p>
             </div>
             <Switch />
           </div>
@@ -83,10 +100,16 @@ export default function SettingsPage() {
           <CardDescription>Manage your account security</CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
-          <Button variant="outline" className="w-full justify-start bg-transparent">
+          <Button
+            variant="outline"
+            className="w-full justify-start bg-transparent"
+          >
             Change Password
           </Button>
-          <Button variant="outline" className="w-full justify-start bg-transparent">
+          <Button
+            variant="outline"
+            className="w-full justify-start bg-transparent"
+          >
             Enable Two-Factor Authentication
           </Button>
           <Button
@@ -98,5 +121,5 @@ export default function SettingsPage() {
         </CardContent>
       </Card>
     </div>
-  )
+  );
 }

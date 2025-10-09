@@ -1,16 +1,20 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import Image from "next/image"
-import { Shield, Zap, Gift, Star, Sparkles } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { useRef, useState, useEffect } from "react"
-import { motion, useScroll, useTransform, type Variants, useAnimation } from "framer-motion"
+import { motion, useScroll, useTransform, type Variants } from "framer-motion";
+import { Gift, Shield, Sparkles, Star, Zap } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
+  },
 } as Variants;
 
 const staggerContainer = {
@@ -18,8 +22,7 @@ const staggerContainer = {
   show: {
     transition: { staggerChildren: 0.12, delayChildren: 0.1 },
   },
-}
-
+};
 
 const particleVariants = {
   hidden: { opacity: 0, scale: 0 },
@@ -32,17 +35,17 @@ const particleVariants = {
       duration: 3 + Math.random() * 2,
       delay: i * 0.1,
       repeat: Infinity,
-      repeatDelay: Math.random() * 3
-    }
-  })
-}
+      repeatDelay: Math.random() * 3,
+    },
+  }),
+};
 
 const FloatingParticles = () => {
-  const [particles, setParticles] = useState<number[]>([])
+  const [particles, setParticles] = useState<number[]>([]);
 
   useEffect(() => {
-    setParticles(Array.from({ length: 8 }, (_, i) => i))
-  }, [])
+    setParticles(Array.from({ length: 8 }, (_, i) => i));
+  }, []);
 
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -61,14 +64,17 @@ const FloatingParticles = () => {
         />
       ))}
     </div>
-  )
-}
+  );
+};
 
 export default function LandingPage() {
-  const heroRef = useRef<HTMLDivElement | null>(null)
-  const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] })
-  const parallaxY = useTransform(scrollYProgress, [0, 1], [0, 120])
-  const parallaxScale = useTransform(scrollYProgress, [0, 1], [1, 1.08])
+  const heroRef = useRef<HTMLDivElement | null>(null);
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"],
+  });
+  const parallaxY = useTransform(scrollYProgress, [0, 1], [0, 120]);
+  const parallaxScale = useTransform(scrollYProgress, [0, 1], [1, 1.08]);
 
   return (
     <div className="min-h-screen bg-background">
@@ -79,7 +85,10 @@ export default function LandingPage() {
             <span className="text-xl font-bold text-foreground">Blink</span>
           </Link>
           <nav className="hidden md:flex items-center gap-8">
-            <Link href="#features" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+            <Link
+              href="#features"
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+            >
               Features
             </Link>
             <Link
@@ -95,7 +104,11 @@ export default function LandingPage() {
               Testimonials
             </Link>
           </nav>
-          <motion.div initial={{ opacity: 0, y: -6 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
+          <motion.div
+            initial={{ opacity: 0, y: -6 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+          >
             <Button asChild size="sm" className="rounded-full">
               <Link href="/dashboard">Try Blink</Link>
             </Button>
@@ -103,7 +116,10 @@ export default function LandingPage() {
         </div>
       </header>
 
-      <section ref={heroRef} className="relative bg-black text-white overflow-hidden">
+      <section
+        ref={heroRef}
+        className="relative bg-black text-white overflow-hidden"
+      >
         <FloatingParticles />
         <motion.div
           aria-hidden
@@ -118,7 +134,7 @@ export default function LandingPage() {
             transition={{
               duration: 4,
               repeat: Infinity,
-              ease: [0.4, 0, 0.6, 1]
+              ease: [0.4, 0, 0.6, 1],
             }}
           >
             <Image
@@ -138,18 +154,38 @@ export default function LandingPage() {
           animate="show"
           className="relative container mx-auto px-4 py-32 md:py-40 text-center"
         >
-          <motion.h1 variants={fadeUp} className="text-5xl md:text-7xl font-bold mb-6 text-balance">
+          <motion.h1
+            variants={fadeUp}
+            className="text-5xl md:text-7xl font-bold mb-6 text-balance"
+          >
             Bitcoin in a <span className="text-primary italic">Blink</span>
           </motion.h1>
-          <motion.p variants={fadeUp} className="text-lg md:text-xl text-white/90 mb-10 max-w-2xl mx-auto text-balance">
-            Send, receive, and gift Bitcoin instantly with Blink. Experience the future of digital currency with our
-            fast, secure, and user-friendly app.
+          <motion.p
+            variants={fadeUp}
+            className="text-lg md:text-xl text-white/90 mb-10 max-w-2xl mx-auto text-balance"
+          >
+            Send, receive, and gift Bitcoin instantly with Blink. Experience the
+            future of digital currency with our fast, secure, and user-friendly
+            app.
           </motion.p>
-          <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-4 justify-center">
-            <motion.div whileHover={{ y: -2 }} whileTap={{ scale: 0.98 }} className="pointer-events-auto">
-              <Button size="lg" className="text-base rounded-lg">Get Started</Button>
+          <motion.div
+            variants={fadeUp}
+            className="flex flex-col sm:flex-row gap-4 justify-center"
+          >
+            <motion.div
+              whileHover={{ y: -2 }}
+              whileTap={{ scale: 0.98 }}
+              className="pointer-events-auto"
+            >
+              <Button size="lg" className="text-base rounded-lg">
+                Get Started
+              </Button>
             </motion.div>
-            <motion.div whileHover={{ y: -2 }} whileTap={{ scale: 0.98 }} className="pointer-events-auto">
+            <motion.div
+              whileHover={{ y: -2 }}
+              whileTap={{ scale: 0.98 }}
+              className="pointer-events-auto"
+            >
               <Button
                 size="lg"
                 variant="outline"
@@ -171,19 +207,28 @@ export default function LandingPage() {
         viewport={{ once: true, margin: "-100px" }}
       >
         <div className="max-w-6xl mx-auto">
-          <motion.h2 variants={fadeUp} className="text-4xl md:text-5xl font-bold text-center mb-4 text-balance">Why Choose Blink?</motion.h2>
-          <motion.p variants={fadeUp} className="text-base text-muted-foreground text-center mb-16 max-w-3xl mx-auto text-balance">
-            Blink offers a seamless Bitcoin experience with top-notch security, lightning-fast transactions, and the
-            ability to gift Bitcoin to friends and family.
+          <motion.h2
+            variants={fadeUp}
+            className="text-4xl md:text-5xl font-bold text-center mb-4 text-balance"
+          >
+            Why Choose Blink?
+          </motion.h2>
+          <motion.p
+            variants={fadeUp}
+            className="text-base text-muted-foreground text-center mb-16 max-w-3xl mx-auto text-balance"
+          >
+            Blink offers a seamless Bitcoin experience with top-notch security,
+            lightning-fast transactions, and the ability to gift Bitcoin to
+            friends and family.
           </motion.p>
           <div className="grid md:grid-cols-3 gap-8">
-            <motion.div 
-              variants={fadeUp} 
+            <motion.div
+              variants={fadeUp}
               className="text-center group"
               whileHover={{ y: -8, scale: 1.02 }}
               transition={{ duration: 0.2 }}
             >
-              <motion.div 
+              <motion.div
                 className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-primary/20 transition-colors duration-300"
                 whileHover={{ rotate: 360 }}
                 transition={{ duration: 0.6 }}
@@ -192,17 +237,18 @@ export default function LandingPage() {
               </motion.div>
               <h3 className="text-xl font-bold mb-3">Secure Transactions</h3>
               <p className="text-muted-foreground leading-relaxed text-sm">
-                Your Bitcoin is protected with advanced security measures, ensuring safe and reliable transactions.
+                Your Bitcoin is protected with advanced security measures,
+                ensuring safe and reliable transactions.
               </p>
             </motion.div>
 
-            <motion.div 
-              variants={fadeUp} 
+            <motion.div
+              variants={fadeUp}
               className="text-center group"
               whileHover={{ y: -8, scale: 1.02 }}
               transition={{ duration: 0.2 }}
             >
-              <motion.div 
+              <motion.div
                 className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-primary/20 transition-colors duration-300"
                 whileHover={{ scale: 1.1 }}
                 transition={{ duration: 0.2 }}
@@ -211,17 +257,18 @@ export default function LandingPage() {
               </motion.div>
               <h3 className="text-xl font-bold mb-3">Instant Payments</h3>
               <p className="text-muted-foreground leading-relaxed text-sm">
-                Send and receive Bitcoin instantly, anywhere in the world, with our lightning-fast payment network.
+                Send and receive Bitcoin instantly, anywhere in the world, with
+                our lightning-fast payment network.
               </p>
             </motion.div>
 
-            <motion.div 
-              variants={fadeUp} 
+            <motion.div
+              variants={fadeUp}
               className="text-center group"
               whileHover={{ y: -8, scale: 1.02 }}
               transition={{ duration: 0.2 }}
             >
-              <motion.div 
+              <motion.div
                 className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-primary/20 transition-colors duration-300"
                 whileHover={{ y: -2 }}
                 transition={{ duration: 0.2 }}
@@ -230,8 +277,8 @@ export default function LandingPage() {
               </motion.div>
               <h3 className="text-xl font-bold mb-3">Bitcoin Gifting</h3>
               <p className="text-muted-foreground leading-relaxed text-sm">
-                Share the gift of Bitcoin with loved ones. Blink makes it easy to send Bitcoin as a thoughtful and
-                modern gift.
+                Share the gift of Bitcoin with loved ones. Blink makes it easy
+                to send Bitcoin as a thoughtful and modern gift.
               </p>
             </motion.div>
           </div>
@@ -247,8 +294,16 @@ export default function LandingPage() {
         viewport={{ once: true, margin: "-100px" }}
       >
         <div className="max-w-4xl mx-auto">
-          <motion.h2 variants={fadeUp} className="text-4xl md:text-5xl font-bold text-center mb-4 text-balance">How It Works</motion.h2>
-          <motion.p variants={fadeUp} className="text-base text-muted-foreground text-center mb-16 text-balance">
+          <motion.h2
+            variants={fadeUp}
+            className="text-4xl md:text-5xl font-bold text-center mb-4 text-balance"
+          >
+            How It Works
+          </motion.h2>
+          <motion.p
+            variants={fadeUp}
+            className="text-base text-muted-foreground text-center mb-16 text-balance"
+          >
             Getting started with Blink is as easy as one, two, three.
           </motion.p>
           <div className="space-y-8">
@@ -259,7 +314,8 @@ export default function LandingPage() {
               <div>
                 <h3 className="text-xl font-bold mb-2">Download the App</h3>
                 <p className="text-muted-foreground leading-relaxed">
-                  Get Blink on your iOS or Android device from the App Store or Google Play.
+                  Get Blink on your iOS or Android device from the App Store or
+                  Google Play.
                 </p>
               </div>
             </motion.div>
@@ -271,7 +327,8 @@ export default function LandingPage() {
               <div>
                 <h3 className="text-xl font-bold mb-2">Fund Your Wallet</h3>
                 <p className="text-muted-foreground leading-relaxed">
-                  Add Bitcoin to your wallet securely using your preferred payment method.
+                  Add Bitcoin to your wallet securely using your preferred
+                  payment method.
                 </p>
               </div>
             </motion.div>
@@ -283,7 +340,8 @@ export default function LandingPage() {
               <div>
                 <h3 className="text-xl font-bold mb-2">Start Transacting</h3>
                 <p className="text-muted-foreground leading-relaxed">
-                  You're all set! Send, receive, and gift Bitcoin with ease and confidence.
+                  You're all set! Send, receive, and gift Bitcoin with ease and
+                  confidence.
                 </p>
               </div>
             </motion.div>
@@ -300,12 +358,21 @@ export default function LandingPage() {
         viewport={{ once: true, margin: "-100px" }}
       >
         <div className="max-w-6xl mx-auto">
-          <motion.h2 variants={fadeUp} className="text-4xl md:text-5xl font-bold text-center mb-4 text-balance">Loved by Users Worldwide</motion.h2>
-          <motion.p variants={fadeUp} className="text-base text-muted-foreground text-center mb-16 text-balance">
-            Don't just take our word for it. Here's what our users have to say about Blink.
+          <motion.h2
+            variants={fadeUp}
+            className="text-4xl md:text-5xl font-bold text-center mb-4 text-balance"
+          >
+            Loved by Users Worldwide
+          </motion.h2>
+          <motion.p
+            variants={fadeUp}
+            className="text-base text-muted-foreground text-center mb-16 text-balance"
+          >
+            Don't just take our word for it. Here's what our users have to say
+            about Blink.
           </motion.p>
           <div className="grid md:grid-cols-3 gap-8">
-            <motion.div 
+            <motion.div
               variants={fadeUp}
               whileHover={{ y: -4, scale: 1.02 }}
               transition={{ duration: 0.2 }}
@@ -325,24 +392,26 @@ export default function LandingPage() {
                     ))}
                   </div>
                   <p className="text-sm mb-6 leading-relaxed text-muted-foreground">
-                    "Blink has revolutionized how I handle Bitcoin. It's incredibly fast and secure, making transactions a
-                    breeze."
+                    "Blink has revolutionized how I handle Bitcoin. It's
+                    incredibly fast and secure, making transactions a breeze."
                   </p>
                   <div className="flex items-center gap-3">
-                    <motion.div 
+                    <motion.div
                       className="w-10 h-10 bg-primary/20 rounded-full"
                       whileHover={{ scale: 1.1 }}
                     />
                     <div>
                       <p className="font-semibold text-sm">Sarah</p>
-                      <p className="text-xs text-muted-foreground">Bitcoin Enthusiast</p>
+                      <p className="text-xs text-muted-foreground">
+                        Bitcoin Enthusiast
+                      </p>
                     </div>
                   </div>
                 </CardContent>
               </Card>
             </motion.div>
 
-            <motion.div 
+            <motion.div
               variants={fadeUp}
               whileHover={{ y: -4, scale: 1.02 }}
               transition={{ duration: 0.2 }}
@@ -362,23 +431,26 @@ export default function LandingPage() {
                     ))}
                   </div>
                   <p className="text-sm mb-6 leading-relaxed text-muted-foreground">
-                    "I love the gifting feature! It's the perfect way to introduce friends and family to Bitcoin."
+                    "I love the gifting feature! It's the perfect way to
+                    introduce friends and family to Bitcoin."
                   </p>
                   <div className="flex items-center gap-3">
-                    <motion.div 
+                    <motion.div
                       className="w-10 h-10 bg-accent/20 rounded-full"
                       whileHover={{ scale: 1.1 }}
                     />
                     <div>
                       <p className="font-semibold text-sm">Mark</p>
-                      <p className="text-xs text-muted-foreground">Early Adopter</p>
+                      <p className="text-xs text-muted-foreground">
+                        Early Adopter
+                      </p>
                     </div>
                   </div>
                 </CardContent>
               </Card>
             </motion.div>
 
-            <motion.div 
+            <motion.div
               variants={fadeUp}
               whileHover={{ y: -4, scale: 1.02 }}
               transition={{ duration: 0.2 }}
@@ -398,10 +470,11 @@ export default function LandingPage() {
                     ))}
                   </div>
                   <p className="text-sm mb-6 leading-relaxed text-muted-foreground">
-                    "The user interface is so intuitive. I was able to start using Blink right away without any issues."
+                    "The user interface is so intuitive. I was able to start
+                    using Blink right away without any issues."
                   </p>
                   <div className="flex items-center gap-3">
-                    <motion.div 
+                    <motion.div
                       className="w-10 h-10 bg-primary/30 rounded-full"
                       whileHover={{ scale: 1.1 }}
                     />
@@ -438,7 +511,7 @@ export default function LandingPage() {
                 transition={{
                   duration: 3,
                   repeat: Infinity,
-                  ease: "linear"
+                  ease: "linear",
                 }}
               />
               <CardContent className="pt-16 pb-16 text-center px-8 relative">
@@ -448,12 +521,15 @@ export default function LandingPage() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.6 }}
                 >
-                  <h2 className="text-4xl md:text-5xl font-bold mb-6 text-balance">Ready to Experience Blink?</h2>
+                  <h2 className="text-4xl md:text-5xl font-bold mb-6 text-balance">
+                    Ready to Experience Blink?
+                  </h2>
                   <p className="text-lg text-white/90 mb-10 max-w-2xl mx-auto text-balance">
-                    Join thousands of users who trust Blink for their Bitcoin transactions.
+                    Join thousands of users who trust Blink for their Bitcoin
+                    transactions.
                   </p>
-                  <motion.div 
-                    whileHover={{ scale: 1.05 }} 
+                  <motion.div
+                    whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     className="inline-block"
                   >
@@ -496,20 +572,31 @@ export default function LandingPage() {
               <span className="text-lg font-bold">Blink</span>
             </div>
             <div className="flex items-center gap-6 text-sm text-muted-foreground">
-              <Link href="#" className="hover:text-foreground transition-colors">
+              <Link
+                href="#"
+                className="hover:text-foreground transition-colors"
+              >
                 Terms of Service
               </Link>
-              <Link href="#" className="hover:text-foreground transition-colors">
+              <Link
+                href="#"
+                className="hover:text-foreground transition-colors"
+              >
                 Privacy Policy
               </Link>
-              <Link href="#" className="hover:text-foreground transition-colors">
+              <Link
+                href="#"
+                className="hover:text-foreground transition-colors"
+              >
                 Contact Us
               </Link>
             </div>
           </div>
-          <div className="text-center mt-6 text-sm text-muted-foreground">© 2025 Blink. All rights reserved.</div>
+          <div className="text-center mt-6 text-sm text-muted-foreground">
+            © 2025 Blink. All rights reserved.
+          </div>
         </div>
       </footer>
     </div>
-  )
+  );
 }

@@ -1,23 +1,31 @@
-import { Gift, Check, Send } from "lucide-react"
-import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
+import { Gift, Check, Send } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 
 interface GiftCardProps {
-  amount: number
-  amountUSD: number
-  from?: string
-  to?: string
-  message: string
-  date: string
-  status: "claimed" | "sent" | "pending"
+  amount: number;
+  amountUSD: number;
+  from?: string;
+  to?: string;
+  message: string;
+  date: string;
+  status: "claimed" | "sent" | "pending";
 }
 
-export function GiftCard({ amount, amountUSD, from, to, message, date, status }: GiftCardProps) {
+export function GiftCard({
+  amount,
+  amountUSD,
+  from,
+  to,
+  message,
+  date,
+  status,
+}: GiftCardProps) {
   const formattedDate = new Date(date).toLocaleDateString("en-US", {
     month: "short",
     day: "numeric",
     year: "numeric",
-  })
+  });
 
   return (
     <Card className="overflow-hidden border-2 hover:border-primary transition-colors pt-0">
@@ -34,11 +42,15 @@ export function GiftCard({ amount, amountUSD, from, to, message, date, status }:
           </Badge>
         </div>
         <p className="text-2xl font-bold mb-1">{amount.toFixed(4)} BTC</p>
-        <p className="text-sm text-muted-foreground mb-3">${amountUSD.toFixed(2)}</p>
-        <p className="text-sm font-medium mb-2">{from ? `From ${from}` : `To ${to}`}</p>
+        <p className="text-sm text-muted-foreground mb-3">
+          ${amountUSD.toFixed(2)}
+        </p>
+        <p className="text-sm font-medium mb-2">
+          {from ? `From ${from}` : `To ${to}`}
+        </p>
         <p className="text-sm text-muted-foreground italic mb-3">{message}</p>
         <p className="text-xs text-muted-foreground">{formattedDate}</p>
       </CardContent>
     </Card>
-  )
+  );
 }

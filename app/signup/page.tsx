@@ -1,10 +1,17 @@
-import Link from "next/link"
-import Image from "next/image"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Checkbox } from "@/components/ui/checkbox"
+import Link from "next/link";
+import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Checkbox } from "@/components/ui/checkbox";
 
 export default function SignupPage() {
   return (
@@ -32,7 +39,11 @@ export default function SignupPage() {
           </div>
           <div className="space-y-2">
             <Label htmlFor="confirm-password">Confirm Password</Label>
-            <Input id="confirm-password" type="password" placeholder="••••••••" />
+            <Input
+              id="confirm-password"
+              type="password"
+              placeholder="••••••••"
+            />
           </div>
           <div className="flex items-center space-x-2">
             <Checkbox id="terms" />
@@ -58,19 +69,24 @@ export default function SignupPage() {
               <span className="w-full border-t border-border" />
             </div>
             <div className="relative flex justify-center text-xs uppercase">
-              <span className="bg-card px-2 text-muted-foreground">Or continue with</span>
+              <span className="bg-card px-2 text-muted-foreground">
+                Or continue with
+              </span>
             </div>
           </div>
         </CardContent>
         <CardFooter className="flex justify-center">
           <p className="text-sm text-muted-foreground">
             Already have an account?{" "}
-            <Link href="/login" className="text-primary hover:underline font-semibold">
+            <Link
+              href="/login"
+              className="text-primary hover:underline font-semibold"
+            >
               Sign in
             </Link>
           </p>
         </CardFooter>
       </Card>
     </div>
-  )
+  );
 }

@@ -1,27 +1,40 @@
-"use client"
+"use client";
 
-import { useEffect } from "react"
-import Link from "next/link"
-import Image from "next/image"
-import { Button } from "@/components/ui/button"
-import { Home, RefreshCw } from "lucide-react"
+import { Home, RefreshCw } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { useEffect } from "react";
+import { Button } from "@/components/ui/button";
 
-export default function Error({ error, reset }: { error: Error & { digest?: string }; reset: () => void }) {
+export default function GlobalError({
+  error,
+  reset,
+}: {
+  error: Error & { digest?: string };
+  reset: () => void;
+}) {
   useEffect(() => {
-    console.error(error)
-  }, [error])
+    console.error(error);
+  }, [error]);
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-background p-4">
       <div className="max-w-md w-full text-center space-y-6">
         <div className="flex justify-center">
-          <Image src="/blink.png" alt="Blink" width={80} height={80} className="opacity-50" />
+          <Image
+            src="/blink.png"
+            alt="Blink"
+            width={80}
+            height={80}
+            className="opacity-50"
+          />
         </div>
         <div className="space-y-2">
           <h1 className="text-6xl font-bold text-destructive">500</h1>
           <h2 className="text-3xl font-bold">Something went wrong</h2>
           <p className="text-muted-foreground leading-relaxed">
-            We're sorry, but something unexpected happened. Our team has been notified and we're working on a fix.
+            We're sorry, but something unexpected happened. Our team has been
+            notified and we're working on a fix.
           </p>
         </div>
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
@@ -38,5 +51,5 @@ export default function Error({ error, reset }: { error: Error & { digest?: stri
         </div>
       </div>
     </div>
-  )
+  );
 }

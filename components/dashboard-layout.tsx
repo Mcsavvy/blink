@@ -1,12 +1,22 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import Link from "next/link"
-import Image from "next/image"
-import { usePathname } from "next/navigation"
-import { Home, Wallet, CreditCard, Gift, Settings, LogOut, Menu, Moon, Sun } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import Link from "next/link";
+import Image from "next/image";
+import { usePathname } from "next/navigation";
+import {
+  Home,
+  Wallet,
+  CreditCard,
+  Gift,
+  Settings,
+  LogOut,
+  Menu,
+  Moon,
+  Sun,
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -14,13 +24,13 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
-import { MobileBottomBar } from "@/components/mobile-bottom-bar"
-import { mockUser } from "@/lib/mock-data"
-import { cn } from "@/lib/utils"
-import { useState, useEffect } from "react"
+} from "@/components/ui/dropdown-menu";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { MobileBottomBar } from "@/components/mobile-bottom-bar";
+import { mockUser } from "@/lib/mock-data";
+import { cn } from "@/lib/utils";
+import { useState, useEffect } from "react";
 
 const navItems = [
   { href: "/dashboard", label: "Home", icon: Home },
@@ -28,26 +38,26 @@ const navItems = [
   { href: "/dashboard/payments", label: "Payments", icon: CreditCard },
   { href: "/dashboard/gifts", label: "Gifts", icon: Gift },
   { href: "/dashboard/settings", label: "Settings", icon: Settings },
-]
+];
 
 export function DashboardLayout({ children }: { children: React.ReactNode }) {
-  const pathname = usePathname()
-  const [isDark, setIsDark] = useState(false)
+  const pathname = usePathname();
+  const [isDark, setIsDark] = useState(false);
 
   useEffect(() => {
-    const isDarkMode = document.documentElement.classList.contains("dark")
-    setIsDark(isDarkMode)
-  }, [])
+    const isDarkMode = document.documentElement.classList.contains("dark");
+    setIsDark(isDarkMode);
+  }, []);
 
   const toggleTheme = () => {
-    const newIsDark = !isDark
-    setIsDark(newIsDark)
+    const newIsDark = !isDark;
+    setIsDark(newIsDark);
     if (newIsDark) {
-      document.documentElement.classList.add("dark")
+      document.documentElement.classList.add("dark");
     } else {
-      document.documentElement.classList.remove("dark")
+      document.documentElement.classList.remove("dark");
     }
-  }
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -60,8 +70,8 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
           </div>
           <nav className="flex-1 px-4 py-6 space-y-2">
             {navItems.map((item) => {
-              const Icon = item.icon
-              const isActive = pathname === item.href
+              const Icon = item.icon;
+              const isActive = pathname === item.href;
               return (
                 <Link
                   key={item.href}
@@ -76,7 +86,7 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
                   <Icon className="h-5 w-5" />
                   <span className="font-medium">{item.label}</span>
                 </Link>
-              )
+              );
             })}
           </nav>
         </div>
@@ -86,21 +96,37 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
       <div className="md:pl-64">
         {/* Top Navigation Bar */}
         <header className="sticky top-0 z-10 flex h-22 items-center gap-4 border-b border-border bg-card px-4 md:px-6">
-          <Image src="/blink.png" alt="Blink" width={40} height={40} className="md:hidden" />
+          <Image
+            src="/blink.png"
+            alt="Blink"
+            width={40}
+            height={40}
+            className="md:hidden"
+          />
           <div className="flex-1" />
 
           {/* Theme Toggle */}
           <Button variant="ghost" size="icon" onClick={toggleTheme}>
-            {isDark ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+            {isDark ? (
+              <Sun className="h-5 w-5" />
+            ) : (
+              <Moon className="h-5 w-5" />
+            )}
             <span className="sr-only">Toggle theme</span>
           </Button>
 
           {/* User Menu */}
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="ghost" className="relative h-10 w-10 rounded-full">
+              <Button
+                variant="ghost"
+                className="relative h-10 w-10 rounded-full"
+              >
                 <Avatar>
-                  <AvatarImage src={mockUser.avatar || "/placeholder.svg"} alt={mockUser.name} />
+                  <AvatarImage
+                    src={mockUser.avatar || "/placeholder.svg"}
+                    alt={mockUser.name}
+                  />
                   <AvatarFallback className="bg-primary text-primary-foreground">
                     {mockUser.name
                       .split(" ")
@@ -113,8 +139,12 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
             <DropdownMenuContent align="end" className="w-56">
               <DropdownMenuLabel>
                 <div className="flex flex-col space-y-1">
-                  <p className="text-sm font-medium leading-none">{mockUser.name}</p>
-                  <p className="text-xs leading-none text-muted-foreground">{mockUser.email}</p>
+                  <p className="text-sm font-medium leading-none">
+                    {mockUser.name}
+                  </p>
+                  <p className="text-xs leading-none text-muted-foreground">
+                    {mockUser.email}
+                  </p>
                 </div>
               </DropdownMenuLabel>
               <DropdownMenuSeparator />
@@ -142,5 +172,5 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
       {/* Mobile Bottom Bar */}
       <MobileBottomBar />
     </div>
-  )
+  );
 }
